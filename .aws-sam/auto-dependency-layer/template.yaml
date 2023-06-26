@@ -34,10 +34,6 @@ Resources:
     Properties:
       FunctionName: CreateWeatherLambda
       Handler: create_weather.lambda_handler
-      Policies:
-        DynamoDBCrudPolicy:
-          TableName:
-            Ref: WeatherTable
       Events:
         ApiEvent:
           Type: Api
@@ -51,8 +47,127 @@ Resources:
       - Fn::GetAtt:
         - AwsSamAutoDependencyLayerNestedStack
         - Outputs.CreateWeathera340834fDepLayer
+    Connectors:
+      addWeatherItemToDB:
+        Properties:
+          Destination:
+            Id: WeatherTable
+          Permissions:
+          - Write
     Metadata:
       SamResourceId: CreateWeather
+  UpdateWeather:
+    Type: AWS::Serverless::Function
+    Description: Lambda function updates weather item in DynamoDB table
+    Properties:
+      FunctionName: UpdateWeatherLambda
+      Handler: update_weather.lambda_handler
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /weather/{id}
+            Method: PUT
+            RestApiId:
+              Ref: WeatherApi
+      CodeUri: UpdateWeather
+      Layers:
+      - Fn::GetAtt:
+        - AwsSamAutoDependencyLayerNestedStack
+        - Outputs.UpdateWeathera334e6b7DepLayer
+    Connectors:
+      updateWeatherItemToDB:
+        Properties:
+          Destination:
+            Id: WeatherTable
+          Permissions:
+          - Write
+    Metadata:
+      SamResourceId: UpdateWeather
+  GetWeather:
+    Type: AWS::Serverless::Function
+    Description: Lambda function gets weather item in DynamoDB table
+    Properties:
+      FunctionName: GetWeatherLambda
+      Handler: get_weather.lambda_handler
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /weather/{id}
+            Method: GET
+            RestApiId:
+              Ref: WeatherApi
+      CodeUri: GetWeather
+      Layers:
+      - Fn::GetAtt:
+        - AwsSamAutoDependencyLayerNestedStack
+        - Outputs.GetWeather8a631b68DepLayer
+    Connectors:
+      getWeatherItemToDB:
+        Properties:
+          Destination:
+            Id: WeatherTable
+          Permissions:
+          - Read
+    Metadata:
+      SamResourceId: GetWeather
+  DeleteWeather:
+    Type: AWS::Serverless::Function
+    Description: Lambda function deletes weather item from DynamoDB table
+    Properties:
+      FunctionName: DeleteWeatherLambda
+      Handler: delete_weather.lambda_handler
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /weather/{id}
+            Method: DELETE
+            RestApiId:
+              Ref: WeatherApi
+      CodeUri: DeleteWeather
+      Layers:
+      - Fn::GetAtt:
+        - AwsSamAutoDependencyLayerNestedStack
+        - Outputs.DeleteWeathere1bab1ecDepLayer
+    Connectors:
+      deleteWeatherItemToDB:
+        Properties:
+          Destination:
+            Id: WeatherTable
+          Permissions:
+          - Write
+    Metadata:
+      SamResourceId: DeleteWeather
+  GetAllWeather:
+    Type: AWS::Serverless::Function
+    Description: Lambda function gets all weather item in DynamoDB table
+    Properties:
+      FunctionName: GetsAllWeatherLambda
+      Handler: get_weathers.lambda_handler
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /weathers
+            Method: GET
+            RestApiId:
+              Ref: WeatherApi
+      CodeUri: GetAllWeather
+      Layers:
+      - Fn::GetAtt:
+        - AwsSamAutoDependencyLayerNestedStack
+        - Outputs.GetAllWeather24fa59e0DepLayer
+    Connectors:
+      getsWeatherItemToDB:
+        Properties:
+          Destination:
+            Id: WeatherTable
+          Permissions:
+          - Read
+    Metadata:
+      SamResourceId: GetAllWeather
   WeatherTable:
     Type: AWS::DynamoDB::Table
     Properties:

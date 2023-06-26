@@ -7,6 +7,18 @@ Outputs:
   CreateWeathera340834fDepLayer:
     Value:
       Ref: CreateWeathera340834fDepLayer
+  DeleteWeathere1bab1ecDepLayer:
+    Value:
+      Ref: DeleteWeathere1bab1ecDepLayer
+  GetAllWeather24fa59e0DepLayer:
+    Value:
+      Ref: GetAllWeather24fa59e0DepLayer
+  GetWeather8a631b68DepLayer:
+    Value:
+      Ref: GetWeather8a631b68DepLayer
+  UpdateWeathera334e6b7DepLayer:
+    Value:
+      Ref: UpdateWeathera334e6b7DepLayer
 Resources:
   CreateWeathera340834fDepLayer:
     Metadata:
@@ -17,6 +29,50 @@ Resources:
       ContentUri: /Users/rosius/Documents/rest_weather_api/.aws-sam/auto-dependency-layer/CreateWeathera340834fDepLayer
       Description: Auto created layer for dependencies of function CreateWeather
       LayerName: rest-weather-apiebbef469-CreateWeathera340834f-DepLayer
+      RetentionPolicy: Delete
+    Type: AWS::Serverless::LayerVersion
+  DeleteWeathere1bab1ecDepLayer:
+    Metadata:
+      CreatedBy: AWS SAM CLI sync command
+    Properties:
+      CompatibleRuntimes:
+      - python3.10
+      ContentUri: /Users/rosius/Documents/rest_weather_api/.aws-sam/auto-dependency-layer/DeleteWeathere1bab1ecDepLayer
+      Description: Auto created layer for dependencies of function DeleteWeather
+      LayerName: rest-weather-apiebbef469-DeleteWeathere1bab1ec-DepLayer
+      RetentionPolicy: Delete
+    Type: AWS::Serverless::LayerVersion
+  GetAllWeather24fa59e0DepLayer:
+    Metadata:
+      CreatedBy: AWS SAM CLI sync command
+    Properties:
+      CompatibleRuntimes:
+      - python3.10
+      ContentUri: /Users/rosius/Documents/rest_weather_api/.aws-sam/auto-dependency-layer/GetAllWeather24fa59e0DepLayer
+      Description: Auto created layer for dependencies of function GetAllWeather
+      LayerName: rest-weather-apiebbef469-GetAllWeather24fa59e0-DepLayer
+      RetentionPolicy: Delete
+    Type: AWS::Serverless::LayerVersion
+  GetWeather8a631b68DepLayer:
+    Metadata:
+      CreatedBy: AWS SAM CLI sync command
+    Properties:
+      CompatibleRuntimes:
+      - python3.10
+      ContentUri: /Users/rosius/Documents/rest_weather_api/.aws-sam/auto-dependency-layer/GetWeather8a631b68DepLayer
+      Description: Auto created layer for dependencies of function GetWeather
+      LayerName: rest-weather-apiebbef469-GetWeather8a631b68-DepLayer
+      RetentionPolicy: Delete
+    Type: AWS::Serverless::LayerVersion
+  UpdateWeathera334e6b7DepLayer:
+    Metadata:
+      CreatedBy: AWS SAM CLI sync command
+    Properties:
+      CompatibleRuntimes:
+      - python3.10
+      ContentUri: /Users/rosius/Documents/rest_weather_api/.aws-sam/auto-dependency-layer/UpdateWeathera334e6b7DepLayer
+      Description: Auto created layer for dependencies of function UpdateWeather
+      LayerName: rest-weather-apiebbef469-UpdateWeathera334e6b7-DepLayer
       RetentionPolicy: Delete
     Type: AWS::Serverless::LayerVersion
 Transform: AWS::Serverless-2016-10-31

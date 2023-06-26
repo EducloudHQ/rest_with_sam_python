@@ -36,9 +36,6 @@ Resources:
     Properties:
       FunctionName: CreateWeatherLambda
       Handler: create_weather.lambda_handler
-      Policies:
-        DynamoDBCrudPolicy:
-          TableName: !Ref WeatherTable
       Events:
         ApiEvent:
           Type: Api
@@ -46,6 +43,97 @@ Resources:
             Path: /create-weather
             Method: POST
             RestApiId: !Ref WeatherApi
+    Connectors:
+      addWeatherItemToDB:
+        Properties:
+          Destination:
+            Id: WeatherTable
+          Permissions:
+            - Write
+  UpdateWeather:
+    Type: AWS::Serverless::Function
+    Description: 'Lambda function updates weather item in DynamoDB table'
+    Properties:
+      FunctionName: UpdateWeatherLambda
+      Handler: update_weather.lambda_handler
+
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /weather/{id}
+            Method: PUT
+            RestApiId: !Ref WeatherApi
+    Connectors:
+      updateWeatherItemToDB:
+        Properties:
+          Destination:
+            Id: WeatherTable
+          Permissions:
+            - Write
+  GetWeather:
+    Type: AWS::Serverless::Function
+    Description: 'Lambda function gets weather item in DynamoDB table'
+    Properties:
+      FunctionName: GetWeatherLambda
+      Handler: get_weather.lambda_handler
+
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /weather/{id}
+            Method: GET
+            RestApiId: !Ref WeatherApi
+    Connectors:
+      getWeatherItemToDB:
+        Properties:
+          Destination:
+            Id: WeatherTable
+          Permissions:
+            - Read
+  DeleteWeather:
+    Type: AWS::Serverless::Function
+    Description: 'Lambda function deletes weather item from DynamoDB table'
+    Properties:
+      FunctionName: DeleteWeatherLambda
+      Handler: delete_weather.lambda_handler
+
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /weather/{id}
+            Method: DELETE
+            RestApiId: !Ref WeatherApi
+    Connectors:
+      deleteWeatherItemToDB:
+        Properties:
+          Destination:
+            Id: WeatherTable
+          Permissions:
+            - Write
+  GetAllWeather:
+    Type: AWS::Serverless::Function
+    Description: 'Lambda function gets all weather item in DynamoDB table'
+    Properties:
+      FunctionName: GetsAllWeatherLambda
+      Handler: get_weathers.lambda_handler
+
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /weathers
+            Method: GET
+            RestApiId: !Ref WeatherApi
+    Connectors:
+      getsWeatherItemToDB:
+        Properties:
+          Destination:
+            Id: WeatherTable
+          Permissions:
+            - Read
   WeatherTable:
     Type: AWS::DynamoDB::Table
     Properties:
