@@ -1,0 +1,71 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  rest_weather_api
+
+  Sample SAM Template for rest_weather_api
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Runtime: python3.10
+    CodeUri: src/
+    Timeout: 3
+    MemorySize: 128
+    Environment:
+      Variables:
+        TABLE_NAME: !Ref WeatherTable
+  Api:
+    EndpointConfiguration: REGIONAL
+    TracingEnabled: True
+    Cors:
+      AllowMethods: "'OPTIONS,POST,GET,PUT,DELETE'"
+      AllowHeaders: "'Content-Type'"
+      AllowOrigin:  "'*'"
+Resources:
+  WeatherApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: dev
+      Description: serverless api for weather application
+
+
+  CreateWeather:
+    Type: AWS::Serverless::Function
+    Description: 'Lambda function inserts weather data into DynamoDB table'
+    Properties:
+      FunctionName: CreateWeatherLambda
+      Handler: create_weather.lambda_handler
+      Policies:
+        DynamoDBCrudPolicy:
+          TableName: !Ref WeatherTable
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /create-weather
+            Method: POST
+            RestApiId: !Ref WeatherApi
+  WeatherTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  WeatherApi:
+    Description: "API Gateway endpoint URL for dev stage for create weather function"
+    Value: !Sub "https://${WeatherApi}.execute-api.${AWS::Region}.amazonaws.com/dev/"
+  CreateWeatherFunction:
+    Description: "Create Weather Lambda Function ARN"
+    Value: !GetAtt CreateWeather.Arn

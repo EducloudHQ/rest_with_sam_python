@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS SAM CLI Nested Stack for Auto Dependency Layer Creation
+Metadata:
+  SamCliInfo: 1.86.1
+  key: AWS SAM CLI sync command
+Outputs:
+  CreateWeathera340834fDepLayer:
+    Value:
+      Ref: CreateWeathera340834fDepLayer
+Resources:
+  CreateWeathera340834fDepLayer:
+    Metadata:
+      CreatedBy: AWS SAM CLI sync command
+    Properties:
+      CompatibleRuntimes:
+      - python3.10
+      ContentUri: /Users/rosius/Documents/rest_weather_api/.aws-sam/auto-dependency-layer/CreateWeathera340834fDepLayer
+      Description: Auto created layer for dependencies of function CreateWeather
+      LayerName: rest-weather-apiebbef469-CreateWeathera340834f-DepLayer
+      RetentionPolicy: Delete
+    Type: AWS::Serverless::LayerVersion
+Transform: AWS::Serverless-2016-10-31
