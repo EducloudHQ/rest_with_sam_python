@@ -71,6 +71,27 @@ Resources:
             Id: WeatherTable
           Permissions:
             - Write
+  GetWeather:
+    Type: AWS::Serverless::Function
+    Description: 'Lambda function gets weather item in DynamoDB table'
+    Properties:
+      FunctionName: GetWeatherLambda
+      Handler: get_weather.lambda_handler
+
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /weather/{id}
+            Method: GET
+            RestApiId: !Ref WeatherApi
+    Connectors:
+      getWeatherItemToDB:
+        Properties:
+          Destination:
+            Id: WeatherTable
+          Permissions:
+            - Read
   WeatherTable:
     Type: AWS::DynamoDB::Table
     Properties:

@@ -84,6 +84,34 @@ Resources:
           - Write
     Metadata:
       SamResourceId: UpdateWeather
+  GetWeather:
+    Type: AWS::Serverless::Function
+    Description: Lambda function gets weather item in DynamoDB table
+    Properties:
+      FunctionName: GetWeatherLambda
+      Handler: get_weather.lambda_handler
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /weather/{id}
+            Method: GET
+            RestApiId:
+              Ref: WeatherApi
+      CodeUri: GetWeather
+      Layers:
+      - Fn::GetAtt:
+        - AwsSamAutoDependencyLayerNestedStack
+        - Outputs.GetWeather8a631b68DepLayer
+    Connectors:
+      getWeatherItemToDB:
+        Properties:
+          Destination:
+            Id: WeatherTable
+          Permissions:
+          - Read
+    Metadata:
+      SamResourceId: GetWeather
   WeatherTable:
     Type: AWS::DynamoDB::Table
     Properties:
