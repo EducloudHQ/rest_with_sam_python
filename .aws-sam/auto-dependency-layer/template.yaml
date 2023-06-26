@@ -34,10 +34,6 @@ Resources:
     Properties:
       FunctionName: CreateWeatherLambda
       Handler: create_weather.lambda_handler
-      Policies:
-        DynamoDBCrudPolicy:
-          TableName:
-            Ref: WeatherTable
       Events:
         ApiEvent:
           Type: Api
@@ -51,8 +47,43 @@ Resources:
       - Fn::GetAtt:
         - AwsSamAutoDependencyLayerNestedStack
         - Outputs.CreateWeathera340834fDepLayer
+    Connectors:
+      addWeatherItemToDB:
+        Properties:
+          Destination:
+            Id: WeatherTable
+          Permissions:
+          - Write
     Metadata:
       SamResourceId: CreateWeather
+  UpdateWeather:
+    Type: AWS::Serverless::Function
+    Description: Lambda function updates weather item in DynamoDB table
+    Properties:
+      FunctionName: UpdateWeatherLambda
+      Handler: update_weather.lambda_handler
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /weather/{id}
+            Method: PUT
+            RestApiId:
+              Ref: WeatherApi
+      CodeUri: UpdateWeather
+      Layers:
+      - Fn::GetAtt:
+        - AwsSamAutoDependencyLayerNestedStack
+        - Outputs.UpdateWeathera334e6b7DepLayer
+    Connectors:
+      updateWeatherItemToDB:
+        Properties:
+          Destination:
+            Id: WeatherTable
+          Permissions:
+          - Write
+    Metadata:
+      SamResourceId: UpdateWeather
   WeatherTable:
     Type: AWS::DynamoDB::Table
     Properties:
