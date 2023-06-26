@@ -1,3 +1,17 @@
+# Build a serverless rest api with AWS SAM, Api Gateway and Python
+
+```
+Content
+|- 1.introduction
+    |- 1.1.intended_audience.md
+    |- 1.2.what_is_the_aws_serverless_application_model.md
+    |- 1.3.description_of_the_services.md
+|- 2.prerequisite
+    |-2.1.create_an_aws_account
+    |-2.2.download_postman.md
+    
+```
+
 # rest_weather_api
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
