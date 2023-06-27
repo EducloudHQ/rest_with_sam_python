@@ -13,9 +13,11 @@ Content
     |-3.1.initialize_project.md
     |-3.2.build_and_deploy.md
 |- 4.sam_anatomy
-    
-|- 4.CRUDL_API
-    |-4.1.create_weather_database   
+    |-4.1.template_anatomy.md 
+|- 5.serverless_api
+    |-4.1.create_weather_database.md
+    |-4.2.create_weather_api_gateway.md
+    |-4.3.create_weather_lambda_function.md   
          
 ```
 
