@@ -50,27 +50,6 @@ Resources:
             Id: WeatherTable
           Permissions:
             - Write
-  UpdateWeather:
-    Type: AWS::Serverless::Function
-    Description: 'Lambda function updates weather item in DynamoDB table'
-    Properties:
-      FunctionName: UpdateWeatherLambda
-      Handler: update_weather.lambda_handler
-
-      Events:
-        ApiEvent:
-          Type: Api
-          Properties:
-            Path: /weather/{id}
-            Method: PUT
-            RestApiId: !Ref WeatherApi
-    Connectors:
-      updateWeatherItemToDB:
-        Properties:
-          Destination:
-            Id: WeatherTable
-          Permissions:
-            - Write
   WeatherTable:
     Type: AWS::DynamoDB::Table
     Properties:
