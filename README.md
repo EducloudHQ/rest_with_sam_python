@@ -9,7 +9,14 @@ Content
 |- 2.prerequisite
     |-2.1.create_an_aws_account
     |-2.2.download_postman.md
+|- 3.setup
+    |-3.1.initialize_project.md
+    |-3.2.build_and_deploy.md
+|- 4.sam_anatomy
     
+|- 4.CRUDL_API
+    |-4.1.create_weather_database   
+         
 ```
 
 # rest_weather_api
