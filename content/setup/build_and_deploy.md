@@ -13,6 +13,8 @@ sam deploy --guided
 
 The `sam build` command will build the source of your application. 
 
+The SAM CLI installs dependencies defined in `hello_world/requirements.txt`, creates a deployment package, and saves it in the `.aws-sam/build` folder.
+
 The `sam deploy --guided` command will package and deploy your application to AWS, with a series of prompts:
 
 * **Stack Name**: The name of the stack to deploy to CloudFormation. This should be unique to your account and region, and a good starting point would be something matching your project name.

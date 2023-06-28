@@ -17,7 +17,15 @@ Content
 |- 5.serverless_api
     |-4.1.create_weather_database.md
     |-4.2.create_weather_api_gateway.md
-    |-4.3.create_weather_lambda_function.md   
+|- 6.create    
+    |-6.1.create_weather_lambda_resource.md   
+    |-6.2.create_weather_lambda_function.md 
+|- 7.update
+    |-7.1.update_weather_lambda_resource.md  
+    |-7.2.update_weather_lambda_function.md  
+|-  8.read
+    |-8.1.get_weather_lambda_resource.md  
+    |-8.2.get_weather_lambda_function.md  
          
 ```
 
