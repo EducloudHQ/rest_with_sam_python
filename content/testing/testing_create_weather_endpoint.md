@@ -22,3 +22,5 @@ Be sure to choose `raw` and `json` as body formatters.
 If you open up your dynamodb table in the aws console, you should see the created item there.
 
 ![alt text](https://raw.githubusercontent.com/EducloudHQ/rest_with_sam_python/master/assets/ddb_item.png)
+
+Go ahead and create more items in the dynamodb table.
