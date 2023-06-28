@@ -7,8 +7,8 @@ dynamodb = boto3.resource('dynamodb')
 table_name = os.environ.get("TABLE_NAME")
 table = dynamodb.Table(table_name)
 
-def lambda_handler(event, context):
 
+def lambda_handler(event, context):
     try:
         response = table.scan(TableName=table_name)
         return {
@@ -18,5 +18,5 @@ def lambda_handler(event, context):
     except table_name:
         return {
             'statusCode': 500,
-            'message': json.dumps({"message":"Unable to get weather"})
+            'message': json.dumps({"message": "Unable to get weather"})
         }

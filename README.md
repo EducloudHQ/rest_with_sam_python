@@ -28,7 +28,14 @@ Content
     |-8.2.get_weather_lambda_function.md 
 |-  9.delete
     |-9.1.delete_weather_lambda_resource.md  
-    |-8.2.delete_weather_lambda_function.md 
+    |-9.2.delete_weather_lambda_function.md 
+|-  10.list
+    |-10.1.list_weather_lambda_resource.md  
+    |-10.2.list_weather_lambda_function.md 
+|-  11.deploy
+    |-11.1.deploy.md
+|-  12.testing
+    |-12.1.testing_create_weather_endpoint.md 
          
 ```
 

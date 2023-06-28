@@ -49,7 +49,7 @@ Remember that the lambda function needs to get a weather item in dynamodb table.
 
 Therefore, we need to give the lambda function permission to do so.
 
-We assign a `Read` permission because we are reading data to dynamoDB.
+We assign a `Read` permission because we are reading data from the dynamoDB.
 
 ```yaml
     Connectors:
