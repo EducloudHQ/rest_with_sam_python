@@ -25,7 +25,10 @@ Content
     |-7.2.update_weather_lambda_function.md  
 |-  8.read
     |-8.1.get_weather_lambda_resource.md  
-    |-8.2.get_weather_lambda_function.md  
+    |-8.2.get_weather_lambda_function.md 
+|-  9.delete
+    |-9.1.delete_weather_lambda_resource.md  
+    |-8.2.delete_weather_lambda_function.md 
          
 ```
 
