@@ -36,7 +36,13 @@ Content
     |-11.1.deploy.md
 |-  12.testing
     |-12.1.testing_create_weather_endpoint.md 
-         
+    |-12.1.testing_get_weather_endpoint.md 
+    |-12.1.testing_update_weather_endpoint.md 
+    |-12.1.testing_delete_weather_endpoint.md 
+    |-12.1.testing_list_weathers_endpoint.md 
+|-  13.conclusion
+    |-conclusion.md    
+
 ```
 
 # rest_weather_api
