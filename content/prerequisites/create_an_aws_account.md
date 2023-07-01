@@ -36,7 +36,7 @@ After creating the user, click on the created user and navigate to the `Security
 
 Scroll down to the create access key section and click on `Create access key` 
 
-![alt text](https://raw.githubusercontent.com/EducloudHQ/rest_with_sam_python/master/assets/create_key.png)
+![alt text](https://raw.githubusercontent.com/EducloudHQ/rest_with_sam_python/master/assets/access_key.png)
 
 In the next screen, check the  `Command line interface(Cli) ` box.
 
@@ -50,7 +50,7 @@ Give a description for what you intend on doing with the access key and click `C
 
 ![alt text](https://raw.githubusercontent.com/EducloudHQ/rest_with_sam_python/master/assets/describe.png)
 
-We'll be needed the access Id and Key later on, so be sure to download and save them software.
+We'll be needed the access Id Key and secret later on, so be sure to download and save them software.
 
 ![alt text](https://raw.githubusercontent.com/EducloudHQ/rest_with_sam_python/master/assets/download.png)
 
@@ -58,7 +58,17 @@ We'll be needed the access Id and Key later on, so be sure to download and save 
 ![alt text](https://raw.githubusercontent.com/EducloudHQ/rest_with_sam_python/master/assets/get_access_key.png)
 
 
+## Configure AWS CLI with ACCESS KEY ID and SECRET
 
+Open up your terminal and type the command
+
+`aws configure`.
+
+Copy and paste the Access Key Id and Secret when prompted.Choose your aws region. I choose `us-east-2`.
+
+Then for output format, i choose `None`.
+
+That's all.
 
 
 
