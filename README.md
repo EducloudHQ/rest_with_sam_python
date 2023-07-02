@@ -7,8 +7,9 @@ Content
     |- 1.2.what_is_the_aws_serverless_application_model.md
     |- 1.3.description_of_the_services.md
 |- 2.prerequisite
-    |-2.1.create_an_aws_account
+    |-2.1.create_an_aws_account.md
     |-2.2.download_postman.md
+    |-2.3.install_the_aws_cli.md
 |- 3.setup
     |-3.1.initialize_project.md
     |-3.2.build_and_deploy.md

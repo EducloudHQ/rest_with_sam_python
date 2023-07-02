@@ -58,17 +58,7 @@ We'll be needed the access Id Key and secret later on, so be sure to download an
 ![alt text](https://raw.githubusercontent.com/EducloudHQ/rest_with_sam_python/master/assets/get_access_key.png)
 
 
-## Configure AWS CLI with ACCESS KEY ID and SECRET
 
-Open up your terminal and type the command
-
-`aws configure`.
-
-Copy and paste the Access Key Id and Secret when prompted.Choose your aws region. I choose `us-east-2`.
-
-Then for output format, i choose `None`.
-
-That's all.
 
 
 
